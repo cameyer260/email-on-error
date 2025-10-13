@@ -53,8 +53,8 @@ pm2.connect((err) => {
       "log:out",
     ];
     for (const ev of events) {
-      bus.on(ev, (packet) => {
-        handleEvent(ev, packet);
+      bus.on(ev, async (packet) => {
+        await handleEvent(ev, packet);
       });
     }
 
