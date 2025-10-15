@@ -22,7 +22,7 @@ async function handleEvent(eventName, packet) {
     const data = await mg.messages.create("error.christophermeyer.dev", {
       from: "Mailgun Sandbox <postmaster@error.christophermeyer.dev>",
       to: ["Christopher Meyer <cameyer06@gmail.com>"],
-      subject: "Hello Christopher Meyer",
+      subject: "Error in Your VPS Deployment",
       text: "Congratulations Christopher Meyer, you just sent an email with Mailgun! You are truly awesome!",
     });
     console.log(data);
@@ -49,7 +49,6 @@ pm2.connect((err) => {
     // subscribe to a variety of events
     const events = [
       "process:exception",
-      "process:event", // includes restart, exit, stop, delete, etc
       "log:err",
       "log:out",
     ];
