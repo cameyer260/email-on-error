@@ -19,15 +19,13 @@ async function handleEvent(eventName, packet) {
       username: "api",
       key: process.env.MAILGUN_API_KEY || "",
     });
-    await mg.messages.create(
-      "sandboxfd64b82f144c4fc79e8db1103ac09d3d.mailgun.org",
-      {
-        from: "Mailgun Sandbox <postmaster@sandboxfd64b82f144c4fc79e8db1103ac09d3d.mailgun.org>",
-        to: ["Christopher Meyer <cameyer06@gmail.com>"],
-        subject: "Hello Christopher Meyer",
-        text: "Congratulations Christopher Meyer, you just sent an email with Mailgun! You are truly awesome!",
-      },
-    );
+    const data = await mg.messages.create("error.christophermeyer.dev", {
+      from: "Mailgun Sandbox <postmaster@error.christophermeyer.dev>",
+      to: ["Christopher Meyer <cameyer06@gmail.com>"],
+      subject: "Hello Christopher Meyer",
+      text: "Congratulations Christopher Meyer, you just sent an email with Mailgun! You are truly awesome!",
+    });
+    console.log(data);
   } catch (err) {
     console.error("Error inside handler:", err);
   }
