@@ -22,8 +22,8 @@ async function handleEvent(eventName, packet) {
     const data = await mg.messages.create("error.christophermeyer.dev", {
       from: "Mailgun Sandbox <postmaster@error.christophermeyer.dev>",
       to: ["Christopher Meyer <cameyer06@gmail.com>"],
-      subject: "Error in Your VPS Deployment",
-      text: "Congratulations Christopher Meyer, you just sent an email with Mailgun! You are truly awesome!",
+      subject: "Error in Your Digital Ocean VPS Deployment",
+      text: packet.data,
     });
     console.log(data);
   } catch (err) {
@@ -50,7 +50,6 @@ pm2.connect((err) => {
     const events = [
       "process:exception",
       "log:err",
-      "log:out",
     ];
     for (const ev of events) {
       bus.on(ev, async (packet) => {
