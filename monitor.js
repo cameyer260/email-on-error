@@ -22,7 +22,7 @@ async function handleEvent(eventName, packet) {
     const data = await mg.messages.create("error.christophermeyer.dev", {
       from: "Mailgun Sandbox <postmaster@error.christophermeyer.dev>",
       to: ["Christopher Meyer <cameyer06@gmail.com>"],
-      subject: "Error in Your Digital Ocean VPS Deployment",
+      subject: `Error in Your Digital Ocean VPS Deployment for process: ${packet.process.name}`,
       text: packet.data,
     });
     console.log(data);
