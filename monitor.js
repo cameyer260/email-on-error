@@ -1,7 +1,7 @@
 const pm2 = require("pm2");
 const FormData = require("form-data"); // form-data v4.0.1
 const Mailgun = require("mailgun.js"); // mailgun.js v11.1.0
-require("dotenv").config();
+require("dotenv").config({ path: ".env" });
 
 async function handleEvent(eventName, packet) {
   try {
